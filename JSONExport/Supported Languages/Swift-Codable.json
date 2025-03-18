@@ -91,14 +91,14 @@
                      "fetchBasicTypeWithSpecialNeedsPropertyFromMap": "",
                      "bodyStart": "{\n\t\tguard let values = try? decoder.container(keyedBy: CodingKeys.self) else {\n\t\t\tprint(\"Could not decode coding key container for <!ModelName!>\")\n\t\t\treturn\n\t\t}\n",
                      "bodyEnd": "\t}\n",
-                     "fetchBasicTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>) } catch {\n\t\t\tprint(\"error in parsing <!VarType!>.<!VarName!> ---- \",error.localizedDescription)\n\t\t}\n",
-                     "signature": "\tinit(from decoder: Decoder)",
-                     "fetchArrayOfCustomTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>) } catch {\n\t\t\tprint(\"error in parsing <!VarType!>.<!VarName!> ---- \",error.localizedDescription)\n\t\t}\n",
+                     "fetchBasicTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>) } catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!> :<!VarType!> ---- \",error.localizedDescription)\n\t\t}\n",
+                     "signature": "\tinit(from decoder: Decoder) ",
+                     "fetchArrayOfCustomTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>) } catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!> :<!VarType!> ---- \",error.localizedDescription)\n\t\t}\n",
                      "comment": "",
-                     "fetchCustomTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>)} catch {\n\t\t\t<!VarName!> = <!VarType!>(from: DictionaryDecoder())\n\t\t\tprint(\"error in parsing <!VarType!>.<!VarName!> ---- \",error.localizedDescription)\n\t\t}\n"
+                     "fetchCustomTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>)} catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!> :<!VarType!> ---- \",error.localizedDescription)\n\t\t}\n"
                      }
                      ],
-    "modelDefinition": "\nstruct <!ModelName!> : Codable ",
+    "modelDefinition": "\nstruct <!ModelName!> :Codable ",
     "genericType": "String",
     "getter": "",
     "setter": "",
