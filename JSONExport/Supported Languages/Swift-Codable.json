@@ -91,14 +91,24 @@
                      "fetchBasicTypeWithSpecialNeedsPropertyFromMap": "",
                      "bodyStart": "{\n\t\tguard let values = try? decoder.container(keyedBy: CodingKeys.self) else {\n\t\t\tprint(\"Could not decode coding key container for <!ModelName!>\")\n\t\t\treturn\n\t\t}\n",
                      "bodyEnd": "\t}\n",
-                     "fetchBasicTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>) } catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!> :<!VarType!> ---- \",error.localizedDescription)\n\t\t}\n",
-                     "signature": "\tinit(from decoder: Decoder) ",
-                     "fetchArrayOfCustomTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>) } catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!> :<!VarType!> ---- \",error.localizedDescription)\n\t\t}\n",
+                     "fetchBasicTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>) } catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!>(<!VarType!>) ---- \",error.localizedDescription)\n\t\t}\n",
+                     "signature": "\n\tinit(from decoder: Decoder) ",
+                     "fetchArrayOfCustomTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>) } catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!>(<!VarType!>) ---- \",error.localizedDescription)\n\t\t}\n",
                      "comment": "",
-                     "fetchCustomTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>)} catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!> :<!VarType!> ---- \",error.localizedDescription)\n\t\t}\n"
+                     "fetchCustomTypePropertyFromMap": "\t\tdo { <!VarName!> = try values.decodeIfPresent(<!VarType!>.self, forKey: .<!VarName!>)} catch {\n\t\t\tprint(\"error in parsing <!ModelName!>.<!VarName!>(<!VarType!>) ---- \",error.localizedDescription)\n\t\t}\n"
+                     },
+                     {
+                     "fetchBasicTypeWithSpecialNeedsPropertyFromMap": "",
+                     "bodyStart": "{\n\t\tdo {\n\t\t\tlet jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [.fragmentsAllowed])\n\t\t\tlet decoded = try JSONDecoder().decode(<!ModelName!>.self, from: jsonData)\n\t\t\tself = decoded\n\t\t} catch {\n\t\t\tprint(\"error in parsing <!ModelName!> from jsonObject ---- \",error.localizedDescription)\n\t\t}\n",
+                     "bodyEnd": "\t}\n",
+                     "fetchBasicTypePropertyFromMap": "",
+                     "signature": "\n\tinit(from jsonObject: [String: Any]) ",
+                     "fetchArrayOfCustomTypePropertyFromMap": "",
+                     "comment": "",
+                     "fetchCustomTypePropertyFromMap": ""
                      }
                      ],
-    "modelDefinition": "\nstruct <!ModelName!> :Codable ",
+    "modelDefinition": "\nstruct <!ModelName!>: Codable ",
     "genericType": "String",
     "getter": "",
     "setter": "",
@@ -107,7 +117,7 @@
     "basicTypesWithSpecialFetchingNeeds": [
     ],
     "displayLangName": "Swift - Struct - Codable",
-    "instanceVarDefinition": "\tvar <!VarName!> : <!VarType!>?\n",
+    "instanceVarDefinition": "\tvar <!VarName!>: <!VarType!>?\n",
     "supportsFirstLineStatement": "false",
     "modelEnd": "\n}",
     "staticImports": "import Foundation",
